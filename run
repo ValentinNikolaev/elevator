@@ -1,0 +1,32 @@
+#!/usr/bin/env php
+<?php declare(strict_types = 1);
+
+require_once __DIR__ . '/vendor/autoload.php';
+require_once __DIR__ . '/bootstrap/functions.php';
+require_once __DIR__ . '/bootstrap/services.php';
+
+define('AMQP_DEBUG', config('application.debug', false));
+
+use AlexS\SignalHelper;
+use Symfony\Component\Console\Application;
+use Elevator\Command\{
+    CallCommand,
+    RunSupervisorCommand,
+    StatusCommand
+};
+
+if (!($version = config('application.version')) || !($name = config('application.name'))) {
+    fwrite(STDERR, "Unable to read application config. Exit...\n");
+
+    // Sleep to avoid too fast restart (supervisord issue)
+    exit(sleep(5) ^ 1);
+}
+
+$application = new Application($name, $version);
+$application->getHelperSet()->set(new SignalHelper());
+
+$application->add(new CallCommand());
+$application->add(new RunSupervisorCommand());
+$application->add(new StatusCommand());
+
+$application->run();

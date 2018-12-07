@@ -1,0 +1,40 @@
+version: '2'
+
+services:
+  app:
+    image: phalconphp/php:alpine-php7
+    hostname: master
+    domainname: elevator.local
+    container_name: elevator_app
+    environment:
+      BUILD_ID: 1
+      APPLICATION_NAME: elevator
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    volumes:
+      - .:/app
+      - ./logs/app:/var/log/elevator
+    networks:
+      - default
+
+  redis:
+    image: 'bitnami/redis:latest'
+
+    environment:
+      - REDIS_PASSWORD=redis
+    ports:
+      - "127.0.0.1:6380:6379/tcp"
+    volumes:
+      - redis:/bitnami
+    networks:
+      - default
+
+volumes:
+  redis:
+    driver: local
+
+networks:
+  default:
+    external:
+      name: elevator-tier

@@ -1,0 +1,34 @@
+{
+  "name" : "ValentinNikolaev/elevator",
+  "type": "project",
+  "license": "proprietary",
+  "keywords": [
+    "elevator",
+    "test"
+  ],
+  "authors": [
+    {
+      "name": "Valentin Nikolaev",
+      "email": "valenti.nikolaev@gmail.com",
+      "role": "developer"
+    }
+  ],
+  "require": {
+    "php": ">=7.0",
+    "symfony/console": "^3.3",
+    "monolog/monolog": "^1.23",
+    "alexeyshockov/symfony-signal-helper": "^1.0",
+    "predis/predis": "^1.1"
+  },
+  "autoload": {
+    "psr-4": {
+      "Elevator\\": "src/"
+    },
+    "files": [
+      "bootstrap/functions.php"
+    ]
+  },
+  "config": {
+    "preferred-install": "dist"
+  }
+}

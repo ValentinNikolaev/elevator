@@ -1,0 +1,22 @@
+[application]
+version=0.0.1
+name="Elevator Implementation"
+debug=true
+buildId=1
+
+[redis]
+host=redis
+username=redis
+password=redis
+port=6379
+
+[elevator-supervisor]
+iterationLookupTime=1
+
+[elevator]
+floorsCount=8
+iterationFloorTime=3
+
+[logs]
+level=400
+channel=elevator-php
