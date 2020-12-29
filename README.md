@@ -1,3 +1,6 @@
+![GitHub last commit](https://img.shields.io/github/last-commit/ValentinNikolaev/elevator)
+![visitors](https://visitor-badge.laobi.icu/badge?page_id=ValentinNikolaev.elevator)
+
 ### Особенности
 - поддерживает любое количество пользователей. Пользователи могут заходить в лифт на разных этажах и хотеть ехать в разные направления
 - диаграмма на картинке местами не соответствует коду. Я уже столько раз его переписал, что просто ломает все переделывать
@@ -55,7 +58,7 @@ elevator_status
 [Helpiks.org](https://helpiks.org/6-61630.html)
 
 ### Known issues
-Makae file failed message during 
+Make file gonna failed message during 
 ```$bash
 make first-run
 ```
